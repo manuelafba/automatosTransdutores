@@ -23,7 +23,7 @@ class AutomatoQ1a:
             (2, 'c'): 3,  # Do estado 2, com 'c', vai para o estado 3
 
             (3, 'a'): 1,  # Do estado 1, com 'a', vai para o estado 1
-            (3, 'c'): 2,  # Do estado 3, com 'c', permanece no estado 3
+            (3, 'c'): 3,  # Do estado 3, com 'c', permanece no estado 3
         }
 
         # Define o estado inicial do autômato
