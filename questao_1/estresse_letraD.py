@@ -1,4 +1,4 @@
-from AutomatosQ1 import AutomatoQ1d
+from questao_1.automato_questao_1 import AutomatoQ1d
 
 # Lista contendo as cadeias para teste da expressão regular da máscara de validação de nome
 cadeias_teste = [
