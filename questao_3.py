@@ -11,8 +11,8 @@ def maquina_mealy(alfabeto_entrada, transicoes, transducoes, estado_inicial, cad
     """
     cadeia_saida = ''
     estado_atual = estado_inicial
-    for simbolo in cadeia_entrada:
-        if verificar_cadeia(alfabeto_entrada, cadeia_entrada):
+    if verificar_cadeia(alfabeto_entrada, cadeia_entrada):
+        for simbolo in cadeia_entrada:
             print('='*30)
             print(f'Estado atual:   \t{estado_atual}')
             print(f'Símbolo atual:  \t{simbolo}')
@@ -107,31 +107,6 @@ for entrada in testes:
     maquina_mealy(alfa_entrada, funcao_transicao, funcao_transducao, estado_inicial, entrada)
     contador += 1
     print('x='*30)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
