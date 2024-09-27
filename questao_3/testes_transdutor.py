@@ -1,4 +1,4 @@
-from questao_3 import maquina_mealy
+from transdutor_questao_3 import maquina_mealy
 
 # Definição dos estados do transdutor
 estados = ['q0', 'q1', 'q2', 'q3', 'q4']
