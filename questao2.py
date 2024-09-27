@@ -14,9 +14,8 @@ def automatoFinito(texto):
     a palavra "computador" foi encontrada.
     """
 
-    estados = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'] # Estados do autômato
-    alfabeto = ['c', 'o', 'm', 'p', 'u', 't', 'a', 'd', 'o', 'r'] # Símbolos do alfabeto reconhecido pelo autômato
-    funcoesTransicao = { # Definição das funções de transição do autômato
+    # Definição dos estados e das funções de transição
+    funcoesTransicao = {
         ('q0', 'c'): 'q1', # Se no estado "q0" for lido a letra "c", a transição será para o estado "q1"
         ('q1', 'o'): 'q2',
         ('q2', 'm'): 'q3',
@@ -31,31 +30,26 @@ def automatoFinito(texto):
 
     estadoInicial = 'q0'
     estadoFinal = 'q10'
-
     ocorrencias = []  # Lista vazia para armazenar as posições onde "computador" ocorre
 
-    comprimentoTexto = len(texto) # Determina o comprimento do texto 
-    for i in range(comprimentoTexto): # Laço para percorrer cada posição do texto, sendo "i" uma variável de controle que representa a posição
-        estadoAtual = estadoInicial # Define o estado atual como o estado inicial do autômato para reinicializá-lo a cada nova posição
-        j = i # Variável que percorre os caracteres do texto a partir da posição "i"
+    comprimentoTexto = len(texto)  # Determina o comprimento do texto 
+    for i in range(comprimentoTexto):  # Laço para percorrer cada posição do texto, sendo "i" uma variável de controle que representa a posição
+        estadoAtual = estadoInicial  # Define o estado atual como o estado inicial do autômato para reinicializá-lo a cada nova posição
+        j = i  # Variável que percorre os caracteres do texto a partir da posição "i"
         
-        while j < comprimentoTexto and (estadoAtual, texto[j]) in funcoesTransicao: # Laço que continuará enquanto não chegar o fim do texto (j < comprimentoTexto) e houver uma transição válida
-            estadoAtual = funcoesTransicao[(estadoAtual, texto[j])] # Transição do estado atual para o próximo estado com base no caractere lido
-            j += 1 # Incremento da ariável "j" para avançar para o próximo caractere
+        while j < comprimentoTexto and (estadoAtual, texto[j]) in funcoesTransicao:  # Laço que continuará enquanto não chegar o fim do texto (j < comprimentoTexto) e houver uma transição válida
+            estadoAtual = funcoesTransicao[(estadoAtual, texto[j])]  # Transição do estado atual para o próximo estado com base no caractere lido
+            j += 1  # Incremento da ariável "j" para avançar para o próximo caractere
 
-            if estadoAtual == estadoFinal: # Condicional para verificar se o autômato chegou ao estado final
-                ocorrencias.append(i) # Se sim, adiciona a posição inicial "i" para a lista de ocorrências da palavra "compuatdor"
-                break # Quebra do laço "while"
+        if estadoAtual == estadoFinal: # Condicional para verificar se o autômato chegou ao estado final
+            if (i == 0 or not texto[i - 1].isalpha()) and (j == comprimentoTexto or not texto[j].isalpha()): # Verifica se o caractere anterior não é uma letra
+                ocorrencias.append(i)  # Adiciona a posição inicial da ocorrência para a lsita de posições
 
-    return ocorrencias # Retorno da lista de posições
+    return ocorrencias  # Retorna as posições encontradas
 
-texto = """O computador é uma máquina capaz de variados tipos de tratamento automático de 
-informações ou processamento de dados. Entende-se por computador um sistema físico que 
-realiza algum tipo de computação. Assumiu-se que os computadores pessoais e laptops são 
-ícones da era da informação. O primeiro computador eletromecânico foi construído por 
-Konrad Zuse (1910–1995). Atualmente, um microcomputador é também chamado 
-computador pessoal ou ainda computador doméstico."""
+# Texto a ser analisado
+texto = "O computador é uma máquina capaz de variados tipos de tratamento automático de informações ou processamento de dados. Entende-se por computador um sistema físico que realiza algum tipo de computação. Assumiu-se que os computadores pessoais e laptops são ícones da era da informação. O primeiro computador eletromecânico foi construído por Konrad Zuse (1910–1995). Atualmente, um microcomputador é também chamado computador pessoal ou ainda computador doméstico."
 
+# Chamando a função e imprimindo o resultado
 ocorrencias = automatoFinito(texto)
-
 print("A palavra 'computador' foi encontrada nas posições:", ocorrencias)
