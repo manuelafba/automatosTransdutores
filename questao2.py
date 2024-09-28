@@ -42,7 +42,7 @@ def automatoFinito(texto):
             j += 1  # Incremento da ariável "j" para avançar para o próximo caractere
 
         if estadoAtual == estadoFinal: # Condicional para verificar se o autômato chegou ao estado final
-            if (i == 0 or not texto[i - 1].isalpha()) and (j == comprimentoTexto or not texto[j].isalpha()): # Verifica se o caractere anterior não é uma letra
+            if (i == 0 or texto[i - 1] == ' ') and (j == comprimentoTexto or texto[j] == ' '): # Verifica se o caractere anterior é um espaço vazio e se o caractere após a palavra é um espaço ou o fim do texto
                 ocorrencias.append(i)  # Adiciona a posição inicial da ocorrência para a lsita de posições
 
     return ocorrencias  # Retorna as posições encontradas
