@@ -123,7 +123,7 @@ class AutomatoQ1c:
 
     def __init__(self):
         # Conjunto de estados do autômato
-        self.estados = {0, 1, 2, 3, 4}
+        self.estados = {0, 1, 2, 3, 4, 5}
         
         # Alfabeto aceito
         self.alfabeto = {'a', 'b'}
@@ -131,21 +131,25 @@ class AutomatoQ1c:
         # Transições
         self.transicoes = {
             (0, 'a'): 1,
+            (0, 'b'): 5,
 
             (1, 'a'): 2,
-            (1, 'b'): 3,
+            (1, 'b'): 4,
 
             (2, 'a'): 2,
-            (2, 'b'): 4,
+            (2, 'b'): 3,
 
-            (3, 'b'): 3,
+            (4, 'b'): 4,
+
+
+            
         }
 
         # Estado inicial
         self.estado_inicial = 0
         
         # Estados finais
-        self.estados_finais = {3,4}
+        self.estados_finais = {1,3,4}
 
         # A linguagem aceita é a*b | ab*
 
@@ -184,20 +188,19 @@ class AutomatoQ1d:
         # Transições
         self.transicoes = {
             (0, 'a'): 1,
-            (0, 'b'): 4,
+            (0, 'b'): 3,
 
-            (1, 'a'): 3,
-            (1, 'b'): 4,
+            (1, 'a'): 1,
+            (1, 'b'): 3,
             (1, 'c'): 2,
 
             (2, 'c'): 2,
 
-            (3, 'a'): 3,
-            (3, 'b'): 4,
-            (3, 'c'): 2,
+            (3, 'a'): 2,
+            (3, 'b'): 3,
+            
 
-            (4, 'b'): 4,
-            (4, 'a'): 2,
+            
         }
 
         # Estado inicial
